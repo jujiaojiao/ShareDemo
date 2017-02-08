@@ -59,7 +59,7 @@
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <SinaWeibo
         Id="1"
-        SortId="1"
+        SortId="4"
         AppKey="568898243"
         AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
         RedirectUrl="http://www.sharesdk.cn"
@@ -95,7 +95,7 @@
 	-->
     <Wechat
         Id="4"
-        SortId="4"
+        SortId="1"
         AppId="wx4868b35061f87885"
         AppSecret="64020361b8ec4c99936c0e3999a9f249"
         BypassApproval="false"
