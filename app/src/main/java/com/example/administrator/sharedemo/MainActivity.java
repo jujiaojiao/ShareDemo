@@ -1,5 +1,7 @@
 package com.example.administrator.sharedemo;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //比如分享到QQ，其他平台则只需要更换平台类名，例如Wechat.NAME则是微信
         Platform plat = ShareSDK.getPlatform(QQ.NAME);
-        showShare(plat.getName());
-//        showShare();
+//        showShare(plat.getName());
+        showshare();
     }
     private void showShare(String platform) {
         final OnekeyShare oks = new OnekeyShare();
@@ -63,6 +65,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        oks.setSiteUrl("http://sharesdk.cn");
 
 // 启动分享GUI
+        oks.show(this);
+
+    }
+    private void showshare(){
+        OnekeyShare oks = new OnekeyShare();
+// 参考代码配置章节，设置分享参数
+// 构造一个图标
+        Bitmap enableLogo = BitmapFactory.decodeResource(this.getResources(), R.drawable.ssdk_oks_classic_qq);
+        String label = "ShareSDK";
+        View.OnClickListener listener = new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        };
+        oks.setCustomerLogo(enableLogo, label, listener);
         oks.show(this);
     }
 }
