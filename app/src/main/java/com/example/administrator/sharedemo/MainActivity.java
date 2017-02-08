@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         oks.setComment("我是测试评论文本");
         // site是分享此内容的网站名称，仅在QQ空间使用
 //        oks.setSite("ShareSDK");
+        oks.setSilent(true);   //隐藏编辑页面
+
+//        oks.setSilent(false);// 显示编辑页面
+
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
 //        oks.setSiteUrl("http://sharesdk.cn");
 
