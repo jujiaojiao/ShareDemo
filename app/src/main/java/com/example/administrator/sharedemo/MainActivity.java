@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.renren.Renren;
+import cn.sharesdk.tencent.qq.QQ;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,9 +23,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @Override
+    public void onClick(View v) {
 
-    private void showShare() {
-        OnekeyShare oks = new OnekeyShare();
+            //比如分享到QQ，其他平台则只需要更换平台类名，例如Wechat.NAME则是微信
+        Platform plat = ShareSDK.getPlatform(QQ.NAME);
+        showShare(plat.getName());
+//        showShare();
+    }
+    private void showShare(String platform) {
+        final OnekeyShare oks = new OnekeyShare();
+        //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
+        if (platform != null) {
+            oks.setPlatform(platform);
+        }
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
         // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
@@ -50,10 +64,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 // 启动分享GUI
         oks.show(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        showShare();
     }
 }
